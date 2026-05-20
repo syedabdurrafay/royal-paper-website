@@ -1,0 +1,188 @@
+< !-- CUSTOM CURSOR --><div id="cursor"></div><div id="cursor-ring"></div>< !-- TOAST --><div class="toast" id="toast"><div class="toast-icon">✓</div><div><div class="toast-title">Message Sent !</div><div class="toast-sub">We'll respond within 24 hours</div>
+ </div></div>< !-- NAVIGATION --><nav id="nav"><a href="#" class="nav-logo"><div class="nav-logo-mark">R</div><div class="nav-brand">Royal Paper<span>& Plastic Products</span></div></a><ul class="nav-links"><li><a href="#products">Products</a></li><li><a href="#capabilities">Capabilities</a></li><li><a href="#sustainability">Sustainability</a></li><li><a href="#clients">Clients</a></li><li><a href="#contact">Contact</a></li></ul><button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button><button class="nav-mobile-btn" id="mobileBtn"><span></span><span></span><span></span></button></nav>< !-- HERO --><section class="hero" id="home"><div class="hero-bg"></div><div class="hero-grid"></div><div class="hero-inner"><div class="hero-content"><div class="hero-badge"><span class="hero-badge-dot"></span><span>FSC® Certified · Est. 1990 · Karachi,
+Pakistan</span></div><h1 class="hero-title">Engineering<br><em>Exceptional</em><br><strong>Packaging</strong></h1><p class="hero-sub">Pakistan's leading manufacturer of corrugated and plastic packaging solutions. Trusted by Fortune 500 companies and local champions for over 36 years.</p>
+ <div class="hero-actions"><a href="#contact" class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'}); return false;">Request a Quote → </a><a href="#products" class="btn-secondary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'}); return false;">Explore Products </a></div></div><div class="hero-visual"><div class="hero-card-stack"><div class="hero-card hero-card-main"><div class="hero-card-main-inner"><div class="hero-card-label">Monthly Production Snapshot</div><div class="hero-stat-grid"><div class="hero-stat"><div class="hero-stat-num">500K+</div><div class="hero-stat-label">Units / Month</div></div><div class="hero-stat"><div class="hero-stat-num">36+</div><div class="hero-stat-label">Years Experience</div></div><div class="hero-stat"><div class="hero-stat-num">350+</div><div class="hero-stat-label">Team Members</div></div><div class="hero-stat"><div class="hero-stat-num">75%</div><div class="hero-stat-label">Recycled Materials</div></div></div><div style="margin-top:24px;"><div class="cap-visual-title" style="margin-bottom:14px;">Production Line Utilization</div><div class="bar-group"><div class="bar-label-row"><span class="bar-label">Corrugation Lines</span><span class="bar-pct">92%</span></div><div class="bar-track"><div class="bar-fill" style="width:92%"></div></div></div><div class="bar-group" style="margin-bottom:0"><div class="bar-label-row"><span class="bar-label">Print & Finishing</span><span class="bar-pct">88%</span></div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div></div></div></div><div class="hero-mini-cards" style="bottom: -8px; right: -28px;"><div class="hero-mini"><div class="hero-mini-icon">📦</div><span style="color:var(--muted); font-size:0.72rem;">3,
+5 & 7-ply Corrugation</span></div><div class="hero-mini"><div class="hero-mini-icon">🌿</div><span style="color:var(--muted); font-size:0.72rem;">FSC® Certified Sourcing</span></div></div></div></div></div></section>< !-- MARQUEE --><div class="marquee-section"><div class="marquee-track"><div class="marquee-item"><strong>Unilever Pakistan</strong><span class="marquee-sep">✦</span></div><div class="marquee-item"><strong>Engro Foods</strong><span class="marquee-sep">✦</span></div><div class="marquee-item"><strong>Gul Ahmed Textile</strong><span class="marquee-sep">✦</span></div><div class="marquee-item"><strong>Chevron Pakistan</strong><span class="marquee-sep">✦</span></div><div class="marquee-item"><strong>Dalda Foods</strong><span class="marquee-sep">✦</span></div><div class="marquee-item"><strong>Al-Karam Towels</strong><span class="marquee-sep">✦</span></div><div class="marquee-item" style="color:var(--amber);font-size:0.7rem;letter-spacing:0.12em;">500K+UNITS/MONTH<span class="marquee-sep">✦</span></div><div class="marquee-item"><strong>Unilever Pakistan</strong><span class="marquee-sep">✦</span></div><div class="marquee-item"><strong>Engro Foods</strong><span class="marquee-sep">✦</span></div><div class="marquee-item"><strong>Gul Ahmed Textile</strong><span class="marquee-sep">✦</span></div><div class="marquee-item"><strong>Chevron Pakistan</strong><span class="marquee-sep">✦</span></div><div class="marquee-item"><strong>Dalda Foods</strong><span class="marquee-sep">✦</span></div><div class="marquee-item"><strong>Al-Karam Towels</strong><span class="marquee-sep">✦</span></div><div class="marquee-item" style="color:var(--amber);font-size:0.7rem;letter-spacing:0.12em;">FSC® CERTIFIED<span class="marquee-sep">✦</span></div></div></div>< !-- TRUSTED BY --><div class="section-wrapper" id="clients"><div class="section reveal"><div class="section-label">Trusted Partners</div><h2 class="section-title">Powering Pakistan's<br><em>most iconic brands</em></h2>
+ <p class="section-sub">From multinational corporations to homegrown champions — our packaging delivers results at every scale.</p><div class="trusted-grid"><div class="trusted-card reveal reveal-delay-1"><div><span class="trusted-name">Unilever Pakistan</span><span class="trusted-sub">FMCG · Consumer Goods</span></div></div><div class="trusted-card reveal reveal-delay-2"><div><span class="trusted-name">Engro Foods</span><span class="trusted-sub">Food & Beverage</span></div></div><div class="trusted-card reveal reveal-delay-3"><div><span class="trusted-name">Gul Ahmed Textile</span><span class="trusted-sub">Textiles & Garments</span></div></div><div class="trusted-card reveal reveal-delay-4"><div><span class="trusted-name">Chevron Pakistan</span><span class="trusted-sub">Energy & Lubricants</span></div></div><div class="trusted-card reveal reveal-delay-1"><div><span class="trusted-name">Dalda Foods</span><span class="trusted-sub">Food Manufacturing</span></div></div><div class="trusted-card reveal reveal-delay-2"><div><span class="trusted-name">Al-Karam Towels</span><span class="trusted-sub">Home Textiles</span></div></div></div></div></div><div class="divider"></div>< !-- PRODUCTS --><div class="products-section" id="products"><div class="products-inner"><div class="products-header reveal"><div><div class="section-label">Product Range</div><h2 class="section-title" style="margin-bottom:0;">Every packaging<br><em>challenge,
+solved</em></h2></div><a href="#contact" class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'}); return false;">Request Samples →</a></div><div class="products-grid"><div class="product-card reveal reveal-delay-1"><div class="product-icon">📦</div><div class="product-tag">3-Ply Construction</div><div class="product-name">Single Wall Boxes</div><div class="product-desc">Standard corrugated cartons built for everyday distribution needs. Reliable,
+lightweight,
+and cost-effective for high-volume orders.</div><div class="product-apps"><span class="product-app">FMCG</span><span class="product-app">Food</span><span class="product-app">Retail</span></div></div><div class="product-card reveal reveal-delay-2"><div class="product-icon">🏗️</div><div class="product-tag">5-Ply Heavy Duty</div><div class="product-name">Double Wall Boxes</div><div class="product-desc">Increased stacking strength and crush resistance for heavier goods and long-distance logistics. Engineered for demanding supply chains.</div><div class="product-apps"><span class="product-app">Electronics</span><span class="product-app">Industrial</span></div></div><div class="product-card reveal reveal-delay-3"><div class="product-icon">⚙️</div><div class="product-tag">7-Ply Ultra-Strong</div><div class="product-name">Triple Wall Boxes</div><div class="product-desc">Ultra-heavy-duty solution for bulk industrial shipments and export containers. Maximum compression and burst resistance.</div><div class="product-apps"><span class="product-app">Machinery</span><span class="product-app">Export</span></div></div><div class="product-card reveal reveal-delay-4"><div class="product-icon">✂️</div><div class="product-tag">Precision Die-Cut</div><div class="product-name">Die-Cut Boxes</div><div class="product-desc">Custom-shaped boxes with precision die-cutting for branded retail,
+e-commerce unboxing experiences,
+and gift packaging.</div><div class="product-apps"><span class="product-app">E-Commerce</span><span class="product-app">Gift</span><span class="product-app">Retail</span></div></div><div class="product-card reveal reveal-delay-1"><div class="product-icon">🎨</div><div class="product-tag">Up to 6 Colors</div><div class="product-name">Printed Boxes</div><div class="product-desc">Multi-color flexographic and offset printed corrugated boxes. Bring your brand to life with vibrant,
+food-safe water-based inks.</div><div class="product-apps"><span class="product-app">Branded Retail</span><span class="product-app">FMCG</span></div></div><div class="product-card reveal reveal-delay-2"><div class="product-icon">🍯</div><div class="product-tag">Lightweight & Strong</div><div class="product-name">Honeycomb Boards</div><div class="product-desc">Exceptional strength-to-weight ratio alternative to solid boards. Perfect for automotive parts and white goods protection.</div><div class="product-apps"><span class="product-app">Automotive</span><span class="product-app">White Goods</span></div></div><div class="product-card reveal reveal-delay-3"><div class="product-icon">📋</div><div class="product-tag">RSC Standard</div><div class="product-name">Slotted Cartons</div><div class="product-desc">Regular Slotted Cartons optimized for high-speed automated packing lines and general warehousing distribution use.</div><div class="product-apps"><span class="product-app">Warehousing</span><span class="product-app">Distribution</span></div></div><div class="product-card reveal reveal-delay-4"><div class="product-icon">📄</div><div class="product-tag">Raw Material</div><div class="product-name">Corrugated Sheets</div><div class="product-desc">Raw corrugated sheets for in-house converters,
+industrial fabricators,
+and wholesale buyers. Available in all standard flute profiles.</div><div class="product-apps"><span class="product-app">Wholesale</span><span class="product-app">Industrial</span></div></div></div></div></div>< !-- WHY CHOOSE US --><div class="why-section"><div class="why-inner"><div class="section-label reveal">Why Royal Paper</div><h2 class="section-title reveal">Three decades of<br><em>uncompromising quality</em></h2><div class="why-grid"><div class="why-stats reveal"><div class="why-stat-card"><div class="why-num">36+</div><div class="why-num-label">Years of industry experience and continuous innovation</div></div><div class="why-stat-card"><div class="why-num">500K</div><div class="why-num-label">Units manufactured every single month</div></div><div class="why-stat-card"><div class="why-num">350+</div><div class="why-num-label">Skilled professionals across two facilities</div></div><div class="why-stat-card"><div class="why-num">75%</div><div class="why-num-label">Raw materials from recycled & sustainable sources</div></div></div><div class="why-features reveal reveal-delay-2"><div class="why-feature"><div class="why-feature-icon">🏅</div><div><div class="why-feature-title">FSC® Certified Operations</div><div class="why-feature-desc">Globally recognized certification ensuring responsible forestry practices from source to shelf across every product line.</div></div></div><div class="why-feature"><div class="why-feature-icon">⚡</div><div><div class="why-feature-title">Zero-Downtime Guarantee</div><div class="why-feature-desc">500 KW backup generators ensure uninterrupted production. Your deadlines are never compromised by power outages.</div></div></div><div class="why-feature"><div class="why-feature-icon">🔬</div><div><div class="why-feature-title">6-Stage Quality Testing</div><div class="why-feature-desc">Burst strength,
+ECT,
+GSM,
+moisture,
+box compression,
+and print quality — every batch tested before dispatch.</div></div></div><div class="why-feature"><div class="why-feature-icon">🌿</div><div><div class="why-feature-title">Eco-First Manufacturing</div><div class="why-feature-desc">Water-based inks,
+VOC-free processes,
+in-house waste paper baling,
+and zero liquid discharge in all production areas.</div></div></div></div></div></div></div><div class="divider"></div>< !-- CAPABILITIES --><div class="cap-section" id="capabilities"><div class="cap-inner"><div class="section-label reveal">Manufacturing</div><h2 class="section-title reveal">State-of-the-art<br><em>production facilities</em></h2><div class="cap-grid"><div class="cap-list reveal"><div class="cap-row"><span class="cap-label">Monthly Output</span><span class="cap-value">500,
+000+boxes</span></div><div class="cap-row"><span class="cap-label">Factory Footprint</span><span class="cap-value">4,
+000 sq. ft. × 2</span></div><div class="cap-row"><span class="cap-label">Corrugation Lines</span><span class="cap-value">3 High-Speed (3, 5, 7-ply)</span></div><div class="cap-row"><span class="cap-label">Flexo Printers</span><span class="cap-value">4 Units (6-color)</span></div><div class="cap-row"><span class="cap-label">Die-Cut Setups</span><span class="cap-value">2 (Rotary + Flatbed)</span></div><div class="cap-row"><span class="cap-label">Finishing Systems</span><span class="cap-value">Automated Glue & Stitch</span></div><div class="cap-row"><span class="cap-label">Backup Power</span><span class="cap-value">500 KW Generator</span></div><div class="cap-row"><span class="cap-label">Operating Hours</span><span class="cap-value">Mon–Sat · 9AM–6PM</span></div></div><div class="cap-visual reveal reveal-delay-2"><div class="cap-visual-title">Quality Testing Battery</div><div class="bar-group"><div class="bar-label-row"><span class="bar-label">Bursting Strength Test</span><span class="bar-pct">✓ 100%</span></div><div class="bar-track"><div class="bar-fill" data-width="100" style="width:0%"></div></div></div><div class="bar-group"><div class="bar-label-row"><span class="bar-label">Edge Crush Test (ECT)</span><span class="bar-pct">✓ 100%</span></div><div class="bar-track"><div class="bar-fill" data-width="100" style="width:0%"></div></div></div><div class="bar-group"><div class="bar-label-row"><span class="bar-label">GSM Grammage Verify</span><span class="bar-pct">✓ 100%</span></div><div class="bar-track"><div class="bar-fill" data-width="100" style="width:0%"></div></div></div><div class="bar-group"><div class="bar-label-row"><span class="bar-label">Moisture Control</span><span class="bar-pct">✓ 100%</span></div><div class="bar-track"><div class="bar-fill" data-width="100" style="width:0%"></div></div></div><div class="bar-group"><div class="bar-label-row"><span class="bar-label">Box Compression Load</span><span class="bar-pct">✓ 100%</span></div><div class="bar-track"><div class="bar-fill" data-width="100" style="width:0%"></div></div></div><div class="bar-group" style="margin-bottom:0"><div class="bar-label-row"><span class="bar-label">Print Fidelity Check</span><span class="bar-pct">✓ 100%</span></div><div class="bar-track"><div class="bar-fill" data-width="100" style="width:0%"></div></div></div></div></div></div></div>< !-- SUSTAINABILITY --><div class="sustain-section" id="sustainability"><div class="sustain-inner"><div class="section-label reveal">Green Commitment</div><h2 class="section-title reveal">Packaging the future,
+<br><em>responsibly</em></h2><p class="section-sub reveal">Every decision we make considers its environmental impact. Sustainability is not a policy — it is our process.</p><div class="sustain-grid"><div class="sustain-card reveal reveal-delay-1"><div class="sustain-icon">♻️</div><div class="sustain-pct">75%+</div><div class="sustain-title">Recycled Raw Materials</div><div class="sustain-desc">Over three-quarters of our raw materials are derived from recycled paper and fibre sources,
+drastically reducing virgin resource consumption.</div></div><div class="sustain-card reveal reveal-delay-2"><div class="sustain-icon">💧</div><div class="sustain-pct">0</div><div class="sustain-title">Liquid Discharge Policy</div><div class="sustain-desc">Zero liquid discharge enforced across all active production areas. We treat and reuse process water to eliminate factory effluent entirely.</div></div><div class="sustain-card reveal reveal-delay-3"><div class="sustain-icon">🌱</div><div class="sustain-pct">100%</div><div class="sustain-title">Water-Based Inks</div><div class="sustain-desc">Exclusively water-based,
+non-toxic,
+VOC-free inks used across all print jobs. Food-safe certified and safe for all packaging applications.</div></div></div><div style="margin-top:2px; display:grid; grid-template-columns:1fr 1fr; gap:2px;"><div class="sustain-card reveal reveal-delay-1" style="display:flex; align-items:center; gap:24px; flex-direction:row;"><div style="font-size:1.8rem">🏭</div><div><div class="sustain-title">In-House Waste Baling</div><div class="sustain-desc">State-of-the-art commercial baling system processes all paper waste on-site for responsible recycling and reuse.</div></div></div><div class="sustain-card reveal reveal-delay-2" style="display:flex; align-items:center; gap:24px; flex-direction:row;"><div style="font-size:1.8rem">🌲</div><div><div class="sustain-title" style="display:flex; align-items:center; gap:10px;">FSC® Certified Procurement <div class="fsc-badge" style="margin:0;"><span>FSC®</span></div></div><div class="sustain-desc">All paper sourced from FSC-certified mills — guaranteeing globally responsible and traceable forestry practices.</div></div></div></div></div></div>< !-- PROCESS --><div class="process-section"><div class="process-inner"><div class="section-label reveal">Our Process</div><h2 class="section-title reveal">From requirement<br><em>to delivery</em></h2><div class="process-steps reveal"><div class="process-line"></div><div class="process-step"><div class="process-num">01</div><div><div class="process-title">Consultation & Specification</div><div class="process-desc">Our sales team evaluates your exact packaging specifications,
+budget,
+and supply timeline. We understand your product dimensions,
+weight,
+and branding requirements before proposing a solution.</div><div class="process-tags"><span class="process-tag">Site Visit Available</span><span class="process-tag">Technical Assessment</span></div></div></div><div class="process-step"><div class="process-num">02</div><div><div class="process-title">Custom Design & Sampling</div><div class="process-desc">Our design team creates structural prototypes and print-ready artwork. Physical samples are produced for approval before committing to full production runs.</div><div class="process-tags"><span class="process-tag">Structural Prototypes</span><span class="process-tag">Print Proofing</span></div></div></div><div class="process-step"><div class="process-num">03</div><div><div class="process-title">Quality-Controlled Manufacturing</div><div class="process-desc">Full-batch production on our high-speed corrugation and printing lines. Every stage is monitored against our 6-point quality testing battery — burst,
+ECT,
+GSM,
+moisture,
+compression,
+print.</div><div class="process-tags"><span class="process-tag">6-Stage QC</span><span class="process-tag">Batch Tracking</span></div></div></div><div class="process-step" style="margin-bottom:0"><div class="process-num">04</div><div><div class="process-title">Delivery & After-Sales Support</div><div class="process-desc">On-time delivery to your facility with full documentation. Our team remains available post-delivery for reorders,
+design modifications,
+and ongoing supply planning.</div><div class="process-tags"><span class="process-tag">Nationwide Delivery</span><span class="process-tag">Dedicated Account Manager</span></div></div></div></div></div></div>< !-- TESTIMONIALS --><div class="testi-section"><div class="why-inner"><div class="section-label reveal">Client Feedback</div><h2 class="section-title reveal">What our partners<br><em>say about us</em></h2><div class="testi-grid" style="margin-top:56px;"><div class="testi-card reveal reveal-delay-1"><div class="testi-stars">★★★★★</div><div class="testi-text">Royal Paper has been our go-to packaging supplier for over a decade. Their consistency,
+quality,
+and ability to scale with our demand is unmatched in Pakistan.</div><div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Ahmed Raza</div><div class="testi-role">Supply Chain Director,
+FMCG Sector</div></div></div></div><div class="testi-card reveal reveal-delay-2"><div class="testi-stars">★★★★★</div><div class="testi-text">The FSC certification and eco-friendly processes were important requirements for our global brand standards. Royal Paper exceeded every expectation in sustainability.</div><div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Sara Malik</div><div class="testi-role">Procurement Manager,
+Textile Export</div></div></div></div><div class="testi-card reveal reveal-delay-3"><div class="testi-stars">★★★★★</div><div class="testi-text">From custom die-cut designs to bulk corrugated sheets,
+their range and turnaround time is exceptional. Zero compromise on quality — every single batch.</div><div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Muneeb Khan</div><div class="testi-role">Operations Head,
+E-Commerce Logistics</div></div></div></div></div></div></div><div class="divider"></div>< !-- FAQ --><div class="faq-section"><div class="faq-inner"><div class="section-label reveal">FAQ</div><h2 class="section-title reveal">Common questions<br><em>answered</em></h2><div class="faq-list reveal"><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">What is your minimum order quantity?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner">Minimum order quantities vary by product type and specification. For standard RSC cartons and single-wall boxes,
+we typically work with runs starting from 500 units. Custom die-cut and printed boxes may require higher MOQs depending on the tooling and setup involved. Contact our sales team for a tailored quote.</div></div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Do you provide product samples before full production?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner">Absolutely. We produce physical structural samples and print proofs for client approval before any full production run. This ensures complete alignment on dimensions,
+print color fidelity,
+and structural integrity. Sample timelines depend on complexity but typically range from 3–7 business days.</div></div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Are your inks and adhesives food-safe?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner">Yes. We exclusively use water-based,
+non-toxic,
+VOC-free inks and food-safe adhesives across all product lines. Our starch adhesives are prepared fresh in-house for superior bonding performance. All materials comply with food-contact packaging safety standards.</div></div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">What quality certifications do you hold?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner">Royal Paper holds FSC® (Forest Stewardship Council) certification,
+ensuring all paper procurement meets global responsible forestry standards. We conduct a 6-stage quality testing battery on every production batch: Bursting Strength,
+ECT,
+GSM Grammage,
+Moisture,
+Box Compression,
+and Print Quality.</div></div></div><div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span class="faq-q-text">Can you handle large-scale or urgent orders?</span><div class="faq-icon">+</div></div><div class="faq-a"><div class="faq-a-inner">With three high-speed corrugation lines and a monthly capacity exceeding 500,
+000 units across two facilities,
+we are well-equipped for large-scale and urgent requirements. Our 500 KW backup generators ensure zero production downtime. Contact us directly to discuss your timeline and we will engineer a solution.</div></div></div></div></div></div>< !-- CONTACT --><div class="contact-section" id="contact"><div class="contact-inner"><div class="section-label reveal">Get In Touch</div><h2 class="section-title reveal">Start your packaging<br><em>project today</em></h2><div class="contact-grid"><div><div class="contact-info reveal"><div class="contact-item"><div class="contact-item-icon">📍</div><div><div class="contact-item-label">Factory Address</div><div class="contact-item-value">Plot # B-25,
+SITE II Super Highway<br>Scheme-33,
+Karachi,
+Pakistan</div></div></div><div class="contact-item"><div class="contact-item-icon">📞</div><div><div class="contact-item-label">Phone</div><div class="contact-item-value">+92-21-36881424<br>+92-21-36881425</div></div></div><div class="contact-item"><div class="contact-item-icon">✉️</div><div><div class="contact-item-label">Email</div><div class="contact-item-value">royalpaperandplastic@gmail.com<br>info@royalppackages.com</div></div></div><div class="contact-item"><div class="contact-item-icon">🕐</div><div><div class="contact-item-label">Operating Hours</div><div class="contact-item-value">Monday – Saturday<br>9:00 AM – 6:00 PM PKT</div></div></div><div class="contact-item"><div class="contact-item-icon">🌐</div><div><div class="contact-item-label">Website</div><div class="contact-item-value">www.royalppackages.com</div></div></div></div><div class="map-embed reveal"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.5!2d67.0622!3d24.9012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zU0lURSBJSSBTdXBlciBIaWdod2F5!5e0!3m2!1sen!2spk!4v1700000000000"
+allowfullscreen=""
+loading="lazy"
+referrerpolicy="no-referrer-when-downgrade"
+title="Royal Paper Factory Location"
+></iframe></div></div><div class="contact-form reveal reveal-delay-2"><div class="form-row"><div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" placeholder="e.g. Ahmed Khan" id="f-name" /></div><div class="form-group"><label class="form-label">Company</label><input class="form-input" type="text" placeholder="Company name" id="f-company" /></div></div><div class="form-row"><div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" placeholder="your@email.com" id="f-email" /></div><div class="form-group"><label class="form-label">Phone</label><input class="form-input" type="tel" placeholder="+92 300 000 0000" id="f-phone" /></div></div><div class="form-group"><label class="form-label">Product Interest</label><select class="form-select" id="f-product"><option value="">Select a product type...</option><option>Single Wall Boxes (3-ply)</option><option>Double Wall Boxes (5-ply)</option><option>Triple Wall Boxes (7-ply)</option><option>Die-Cut Custom Boxes</option><option>Printed Boxes (Multi-color)</option><option>Slotted Cartons (RSC)</option><option>Honeycomb Boards</option><option>Corrugated Sheets</option><option>Multiple Products</option></select></div><div class="form-group"><label class="form-label">Estimated Monthly Volume</label><select class="form-select" id="f-volume"><option value="">Select volume range...</option><option>Under 5, 000 units</option><option>5, 000 – 25, 000 units</option><option>25, 000 – 100, 000 units</option><option>100, 000 – 500, 000 units</option><option>500, 000+units</option></select></div><div class="form-group"><label class="form-label">Message / Specifications</label><textarea class="form-textarea" placeholder="Describe your requirements — dimensions, print needs, delivery timeline..." id="f-msg"></textarea></div><button class="form-submit" onclick="submitForm()">Send Inquiry →</button></div></div></div></div>< !-- FOOTER --><footer><div class="footer-inner"><div class="footer-top"><div class="footer-brand"><div class="footer-logo"><div class="nav-logo-mark">R</div><div class="nav-brand">Royal Paper<span>& Plastic Products</span></div></div><p class="footer-tagline">Pakistan's most trusted corrugated packaging manufacturer. Engineering excellence since 1990, from Karachi to the world.</p>
+ <div class="footer-certbadge">🌲 FSC® CERTIFIED COMPANY</div></div><div><div class="footer-col-title">Products</div><ul class="footer-links"><li><a href="#products">Single Wall Boxes</a></li><li><a href="#products">Double Wall Boxes</a></li><li><a href="#products">Triple Wall Boxes</a></li><li><a href="#products">Die-Cut Boxes</a></li><li><a href="#products">Printed Boxes</a></li><li><a href="#products">Honeycomb Boards</a></li></ul></div><div><div class="footer-col-title">Company</div><ul class="footer-links"><li><a href="#home">About Us</a></li><li><a href="#capabilities">Capabilities</a></li><li><a href="#sustainability">Sustainability</a></li><li><a href="#clients">Our Clients</a></li><li><a href="#contact">Contact</a></li><li><a href="http://www.royalppackages.com" target="_blank">Website</a></li></ul></div><div><div class="footer-col-title">Newsletter</div><p style="font-size:0.78rem; color:var(--muted); margin-bottom:16px; line-height:1.6;">Get updates on new capabilities and industry insights.</p><div class="footer-newsletter"><input type="email" placeholder="your@email.com" /><button>Subscribe →</button></div><div style="margin-top:20px;"><div class="footer-col-title" style="margin-bottom:12px;">Registration</div><div style="font-family:var(--font-mono); font-size:0.68rem; color:var(--subtle); line-height:2;">NTN: 7245050<br>Reg: 32-77-8763-245-39<br>Est. 1990 · Karachi, PK </div></div></div></div><div class="footer-bottom"><div class="footer-copy">© 2025 <strong>Royal Paper & Plastic Products (Pvt) Ltd.</strong>All rights reserved. Packaging the Future – One Box at a Time.</div><div class="footer-meta"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="http://www.royalppackages.com" target="_blank">royalppackages.com</a></div></div></div></footer><script> // Custom Cursor
+const cursor=document.getElementById('cursor');
+const ring=document.getElementById('cursor-ring');
+let mx=0,
+my=0,
+rx=0,
+ry=0;
+
+document.addEventListener('mousemove', e=> {
+        mx=e.clientX; my=e.clientY;
+
+        cursor.style.transform=`translate($ {
+                mx - 5
+            }
+
+            px, $ {
+                my - 5
+            }
+
+            px)`;
+    });
+
+function animateRing() {
+    rx+=(mx - rx) * 0.12;
+    ry+=(my - ry) * 0.12;
+
+    ring.style.transform=`translate($ {
+            rx - 18
+        }
+
+        px, $ {
+            ry - 18
+        }
+
+        px)`;
+    requestAnimationFrame(animateRing);
+}
+
+animateRing();
+
+document.querySelectorAll('a, button, .product-card, .why-feature, .faq-q, .trusted-card, .testi-card, .sustain-card, .process-step, .cap-row, .contact-item').forEach(el=> {
+        el.addEventListener('mouseenter', ()=> document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', ()=> document.body.classList.remove('cursor-hover'));
+    });
+
+// Nav scroll
+window.addEventListener('scroll', ()=> {
+        document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+// Scroll reveal
+const obs=new IntersectionObserver((entries)=> {
+        entries.forEach(e=> {
+                if (e.isIntersecting) e.target.classList.add('in');
+            });
+    }
+
+    , {
+    threshold: 0.1
+});
+document.querySelectorAll('.reveal').forEach(el=> obs.observe(el));
+
+// Bar animations
+const barObs=new IntersectionObserver((entries)=> {
+        entries.forEach(e=> {
+                if (e.isIntersecting) {
+                    e.target.querySelectorAll('.bar-fill[data-width]').forEach(bar=> {
+                            setTimeout(()=> {
+                                    bar.style.width=bar.dataset.width + '%';
+                                }
+
+                                , 300);
+                        });
+                }
+            });
+    }
+
+    , {
+    threshold: 0.3
+});
+document.querySelectorAll('.cap-visual').forEach(el=> barObs.observe(el));
+
+// FAQ
+function toggleFaq(btn) {
+    const item=btn.parentElement;
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=> i.classList.remove('open'));
+    if ( !wasOpen) item.classList.add('open');
+}
+
+// Form submit
+function submitForm() {
+    const toast=document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(()=> toast.classList.remove('show'), 4000);
+
+    ['f-name',
+    'f-company',
+    'f-email',
+    'f-phone',
+    'f-msg'].forEach(id=> {
+            const el=document.getElementById(id);
+            if (el) el.value='';
+        });
+    document.getElementById('f-product').selectedIndex=0;
+    document.getElementById('f-volume').selectedIndex=0;
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a=> {
+        a.addEventListener('click', e=> {
+                const id=a.getAttribute('href').slice(1);
+                const el=document.getElementById(id);
+
+                if (el) {
+                    e.preventDefault(); el.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+            }
+        });
+});
+</script>
