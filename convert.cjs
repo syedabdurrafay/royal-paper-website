@@ -91,10 +91,53 @@ export default function Main() {
     };
     window.addEventListener('scroll', handleScroll);
 
+    // ============================================================
+    // INTERACTIVE 3D MOUSE TRACKING FOR ORBS AND CUBE
+    // ============================================================
+    const orb1 = document.getElementById('orb1');
+    const orb2 = document.getElementById('orb2');
+    const orb3 = document.getElementById('orb3');
+    const rotatingCube = document.getElementById('rotatingCube');
+
+    const handleMouseMove3D = (e) => {
+        // Get mouse position relative to viewport (normalized -1 to 1)
+        const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+        const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+        
+        // Apply subtle 3D rotation to orbs based on mouse position
+        if (orb1) {
+            const rotY = mouseX * 15;
+            const rotX = mouseY * -15;
+            orb1.style.transform = \`rotateY(\${rotY}deg) rotateX(\${rotX}deg) translate3d(\${mouseX * 20}px, \${mouseY * -15}px, \${mouseX * 10}px)\`;
+        }
+        
+        if (orb2) {
+            const rotY = mouseX * -12;
+            const rotX = mouseY * 12;
+            orb2.style.transform = \`rotateY(\${rotY}deg) rotateX(\${rotX}deg) translate3d(\${mouseX * -15}px, \${mouseY * -10}px, \${mouseX * 15}px)\`;
+        }
+        
+        if (orb3) {
+            const rotY = mouseX * 10;
+            const rotX = mouseY * -10;
+            orb3.style.transform = \`rotateY(\${rotY}deg) rotateX(\${rotX}deg) translate3d(\${mouseX * 12}px, \${mouseY * 8}px, \${mouseX * -8}px)\`;
+        }
+        
+        // Rotate cube based on mouse position
+        if (rotatingCube) {
+            const cubeRotY = mouseX * 30;
+            const cubeRotX = mouseY * -20;
+            rotatingCube.style.transform = \`rotateX(\${cubeRotX}deg) rotateY(\${cubeRotY}deg) rotateZ(\${mouseX * 5}deg)\`;
+        }
+    };
+
+    document.addEventListener('mousemove', handleMouseMove3D);
+
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousemove', handleMouseMove3D);
       elements.forEach(el => {
           el.removeEventListener('mouseenter', addHover);
           el.removeEventListener('mouseleave', removeHover);
@@ -115,6 +158,10 @@ export default function Main() {
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 4000);
     }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

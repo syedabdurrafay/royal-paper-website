@@ -11,6 +11,26 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Small script to toggle mobile nav (works with React-rendered nav button) -->
+    <script>
+      (function(){
+        document.addEventListener('click', function(e){
+          const btn = e.target.closest('#mobileBtn');
+          if (btn) {
+            document.body.classList.toggle('mobile-open');
+            btn.setAttribute('aria-expanded', String(document.body.classList.contains('mobile-open')));
+            return;
+          }
+          // close when nav link clicked
+          if (e.target.closest('.nav-links a')) {
+            document.body.classList.remove('mobile-open');
+            const mb = document.getElementById('mobileBtn'); if (mb) mb.setAttribute('aria-expanded','false');
+            return;
+          }
+        });
+        document.addEventListener('keydown', function(e){ if (e.key === 'Escape') document.body.classList.remove('mobile-open'); });
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
