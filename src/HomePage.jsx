@@ -1,8 +1,20 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 export default function Main() {
+  const THEMES = [
+    { key: 'sage', label: 'Sage Dark', emoji: '🌿', preview: ['#1E2E34', '#9CAF88'] },
+    { key: 'offwhite', label: 'Off White', emoji: '☀️', preview: ['#F5F0E8', '#9CAF88'] },
+    { key: 'ocean', label: 'Ocean', emoji: '🌊', preview: ['#041526', '#00D0FF'] },
+    { key: 'ocean-light', label: 'Ocean Light', emoji: '💎', preview: ['#E8F8FC', '#00D0FF'] },
+    { key: 'forest', label: 'Forest', emoji: '🌲', preview: ['#071E11', '#D59A2B'] },
+    { key: 'navy', label: 'Navy Gold', emoji: '👑', preview: ['#0F1B2E', '#D4AF37'] },
+    { key: 'midnight', label: 'Midnight', emoji: '✨', preview: ['#0B0E12', '#D6B24A'] },
+    { key: 'elite-dark', label: 'Elite Dark', emoji: '💎', preview: ['#0D0D0D', '#E8E8E8'] },
+    { key: 'elite-light', label: 'Elite Light', emoji: '✨', preview: ['#F8F6F4', '#1A1A1A'] },
+  ];
+
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    return localStorage.getItem('theme') || 'sage';
   });
 
   useEffect(() => {
@@ -10,9 +22,7 @@ export default function Main() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-  };
+  const [showPalette, setShowPalette] = useState(false);
 
   const [showFab, setShowFab] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -97,50 +107,89 @@ export default function Main() {
     });
 
     // ============================================================
-    // ENHANCED 3D INTERACTIVE CUBE SYSTEM - Optimized for 3 cubes
+    // SINGLE LARGE INTERACTIVE CUBE
+    // - Auto-rotates when idle
+    // - Follows mouse smoothly when hovered
+    // - Drifts down page with scroll (15% -> 85%)
+    // - Glows with current theme accent on hover
     // ============================================================
-    const mainCube = document.getElementById('rotatingCube');
-    let rotationAngleMain = 0;
-    
-    const handleMouseMove3D = (e) => {
-      const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-      
-      // Interactive rotation for main cube
-      if (mainCube) {
-        const cubeRotY = mouseX * 40;
-        const cubeRotX = mouseY * -30;
-        mainCube.style.transform = `rotateX(${cubeRotX}deg) rotateY(${cubeRotY}deg) rotateZ(${mouseX * 8}deg)`;
-      }
-    };
-    
-    document.addEventListener('mousemove', handleMouseMove3D);
+    const cube = document.getElementById('rotatingCube');
+    let animationFrameId2;
+    let lastInteraction = Date.now();
+    let idleAngle = 0;
+    let currentX = 0, currentY = 0, targetX = 0, targetY = 0;
 
-    // Auto-rotation for all cubes (continuous smooth rotation)
-    const autoRotateCubes = () => {
-      rotationAngleMain += 0.8;
-      
-      const secondaryCube = document.querySelector('.secondary-cube');
-      const tertiaryCube = document.querySelector('.tertiary-cube');
-      
-      if (secondaryCube) {
-        secondaryCube.style.transform = `rotateX(${rotationAngleMain * 0.6}deg) rotateY(${rotationAngleMain}deg) rotateZ(${rotationAngleMain * 0.4}deg)`;
-      }
-      
-      if (tertiaryCube) {
-        tertiaryCube.style.transform = `rotateX(${rotationAngleMain * 0.8}deg) rotateY(${rotationAngleMain * 1.2}deg) rotateZ(${rotationAngleMain * 0.5}deg)`;
-      }
-      
-      animationFrameId = requestAnimationFrame(autoRotateCubes);
+    const onCubeMouseEnter = () => {
+      lastInteraction = Date.now();
+      if (cube) cube.classList.add('hover');
     };
-    
-    autoRotateCubes();
+
+    const onCubeMouseLeave = () => {
+      lastInteraction = Date.now();
+      targetX = 0; targetY = 0;
+      if (cube) cube.classList.remove('hover');
+    };
+
+    const onCubeMouseMove = (e) => {
+      if (!cube) return;
+      const rect = cube.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / rect.width;
+      const dy = (e.clientY - cy) / rect.height;
+      targetY = dx * 30; // rotateY
+      targetX = dy * -30; // rotateX
+      lastInteraction = Date.now();
+    };
+
+    const handleScrollCube = () => {
+      if (!cube) return;
+      const winScroll = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = height > 0 ? (winScroll / height) : 0;
+      const topPct = 15 + ratio * 70;
+      cube.style.top = `${topPct}%`;
+    };
+
+    window.addEventListener('scroll', handleScrollCube);
+    handleScrollCube();
+
+    if (cube) {
+      cube.addEventListener('mouseenter', onCubeMouseEnter);
+      cube.addEventListener('mouseleave', onCubeMouseLeave);
+      cube.addEventListener('mousemove', onCubeMouseMove);
+      cube.style.position = 'fixed';
+    }
+
+    const animateSingleCube = () => {
+      animationFrameId2 = requestAnimationFrame(animateSingleCube);
+      // smooth interpolation
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+
+      // idle auto-rotation when no recent interaction
+      if (Date.now() - lastInteraction > 1200) {
+        idleAngle += 0.6;
+        const wobble = Math.sin(idleAngle * 0.01) * 6;
+        if (cube) cube.style.transform = `rotateX(${currentX + wobble}deg) rotateY(${currentY + idleAngle}deg)`;
+      } else {
+        if (cube) cube.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+      }
+    };
+
+    animateSingleCube();
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(animationFrameId2);
       window.removeEventListener('scroll', handleParallax);
-      document.removeEventListener('mousemove', handleMouseMove3D);
+      window.removeEventListener('scroll', handleScrollCube);
+      if (cube) {
+        cube.removeEventListener('mouseenter', onCubeMouseEnter);
+        cube.removeEventListener('mouseleave', onCubeMouseLeave);
+        cube.removeEventListener('mousemove', onCubeMouseMove);
+      }
       interactiveElements.forEach(el => {
         el.removeEventListener('mouseenter', addHover);
         el.removeEventListener('mouseleave', removeHover);
@@ -228,7 +277,24 @@ export default function Main() {
         </ul>
         
         <div className="nav-actions">
-          <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme" />
+          <div className="theme-palette">
+            <button onClick={() => setShowPalette(s => !s)} className="theme-toggle" aria-label="Theme palette">🎨</button>
+            {showPalette && (
+              <div className="theme-panel" role="menu">
+                {THEMES.map(t => (
+                  <button key={t.key} className={`theme-option ${t.key === theme ? 'active' : ''}`} onClick={() => { setTheme(t.key); setShowPalette(false); }} role="menuitem">
+                    <div className="swatches">
+                      <span className="swatch" style={{ background: t.preview[0] }}></span>
+                      <span className="swatch" style={{ background: t.preview[1] }}></span>
+                    </div>
+                    <div className="theme-label">{t.emoji} {t.label}</div>
+                    {t.key === theme && <div className="theme-check">✓</div>}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+          
           <button className="nav-cta" onClick={() => document.getElementById('contact').scrollIntoView({behavior:'smooth'})}>
             Get a Quote
           </button>
@@ -267,49 +333,7 @@ export default function Main() {
           </div>
         </div>
         
-        {/* Secondary Cube - Right Side - Minimalist Design */}
-        <div className="hero-3d-cube secondary-cube">
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">▲</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">◈</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">▼</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">◉</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">☐</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">✦</span>
-          </div>
-        </div>
-        
-        {/* Tertiary Cube - Left Side - Accent Cube */}
-        <div className="hero-3d-cube tertiary-cube">
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">⬥</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">◬</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">✧</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">⬤</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">○</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">□</span>
-          </div>
-        </div>
+        {/* Secondary & tertiary cubes removed — single large cube used now */}
         
         <div className="hero-inner">
           <div className="hero-content">
