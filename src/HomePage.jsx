@@ -1,28 +1,26 @@
+// HomePage.jsx - Complete updated file (REMOVED ALL ICONS FROM CUBES)
 import React, { useEffect, useState, useRef } from 'react';
+import img1 from './assets/Gemini_Generated_Image_nd7cind7cind7cin.png';
+import img2 from './assets/Gemini_Generated_Image_oi5pjzoi5pjzoi5p.png';
+import img3 from './assets/Gemini_Generated_Image_xqqrn4xqqrn4xqqr.png';
+import img4 from './assets/Gemini_Generated_Image_42fg9442fg9442fg.png';
 
-export default function Main() {
-  const THEMES = [
-    { key: 'sage', label: 'Sage Dark', emoji: '🌿', preview: ['#1E2E34', '#9CAF88'] },
-    { key: 'offwhite', label: 'Off White', emoji: '☀️', preview: ['#F5F0E8', '#9CAF88'] },
-    { key: 'ocean', label: 'Ocean', emoji: '🌊', preview: ['#041526', '#00D0FF'] },
-    { key: 'ocean-light', label: 'Ocean Light', emoji: '💎', preview: ['#E8F8FC', '#00D0FF'] },
-    { key: 'forest', label: 'Forest', emoji: '🌲', preview: ['#071E11', '#D59A2B'] },
-    { key: 'navy', label: 'Navy Gold', emoji: '👑', preview: ['#0F1B2E', '#D4AF37'] },
-    { key: 'midnight', label: 'Midnight', emoji: '✨', preview: ['#0B0E12', '#D6B24A'] },
-    { key: 'elite-dark', label: 'Elite Dark', emoji: '💎', preview: ['#0D0D0D', '#E8E8E8'] },
-    { key: 'elite-light', label: 'Elite Light', emoji: '✨', preview: ['#F8F6F4', '#1A1A1A'] },
-  ];
-
+export default function HomePage() {
+  // Single theme state - only dark or light
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'sage';
+    return localStorage.getItem('theme') || 'dark';
   });
+
+  // Toggle between dark and light themes
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
   }, [theme]);
-
-  const [showPalette, setShowPalette] = useState(false);
 
   const [showFab, setShowFab] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -95,100 +93,88 @@ export default function Main() {
     };
     window.addEventListener('scroll', handleParallax);
 
-    const spotlightCards = document.querySelectorAll('.spotlight-card');
-    spotlightCards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mx', `${x}px`);
-        card.style.setProperty('--my', `${y}px`);
-      });
-    });
-
-    // ============================================================
-    // SINGLE LARGE INTERACTIVE CUBE
-    // - Auto-rotates when idle
-    // - Follows mouse smoothly when hovered
-    // - Drifts down page with scroll (15% -> 85%)
-    // - Glows with current theme accent on hover
-    // ============================================================
-    const cube = document.getElementById('rotatingCube');
-    let animationFrameId2;
+    // Interactive Cube Mouse Tracking
+    const mainCube = document.getElementById('rotatingCube');
     let lastInteraction = Date.now();
-    let idleAngle = 0;
     let currentX = 0, currentY = 0, targetX = 0, targetY = 0;
+    let idleAngle = 0;
 
     const onCubeMouseEnter = () => {
       lastInteraction = Date.now();
-      if (cube) cube.classList.add('hover');
+      if (mainCube) mainCube.classList.add('hover');
     };
 
     const onCubeMouseLeave = () => {
       lastInteraction = Date.now();
       targetX = 0; targetY = 0;
-      if (cube) cube.classList.remove('hover');
+      if (mainCube) mainCube.classList.remove('hover');
     };
 
     const onCubeMouseMove = (e) => {
-      if (!cube) return;
-      const rect = cube.getBoundingClientRect();
+      if (!mainCube) return;
+      const rect = mainCube.getBoundingClientRect();
       const cx = rect.left + rect.width / 2;
       const cy = rect.top + rect.height / 2;
       const dx = (e.clientX - cx) / rect.width;
       const dy = (e.clientY - cy) / rect.height;
-      targetY = dx * 30; // rotateY
-      targetX = dy * -30; // rotateX
+      targetY = dx * 40;
+      targetX = dy * -40;
       lastInteraction = Date.now();
     };
 
-    const handleScrollCube = () => {
-      if (!cube) return;
-      const winScroll = window.scrollY;
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      const ratio = height > 0 ? (winScroll / height) : 0;
-      const topPct = 15 + ratio * 70;
-      cube.style.top = `${topPct}%`;
-    };
-
-    window.addEventListener('scroll', handleScrollCube);
-    handleScrollCube();
-
-    if (cube) {
-      cube.addEventListener('mouseenter', onCubeMouseEnter);
-      cube.addEventListener('mouseleave', onCubeMouseLeave);
-      cube.addEventListener('mousemove', onCubeMouseMove);
-      cube.style.position = 'fixed';
+    if (mainCube) {
+      mainCube.addEventListener('mouseenter', onCubeMouseEnter);
+      mainCube.addEventListener('mouseleave', onCubeMouseLeave);
+      mainCube.addEventListener('mousemove', onCubeMouseMove);
     }
 
-    const animateSingleCube = () => {
-      animationFrameId2 = requestAnimationFrame(animateSingleCube);
-      // smooth interpolation
+    const animateCube = () => {
+      requestAnimationFrame(animateCube);
       currentX += (targetX - currentX) * 0.12;
       currentY += (targetY - currentY) * 0.12;
 
-      // idle auto-rotation when no recent interaction
-      if (Date.now() - lastInteraction > 1200) {
-        idleAngle += 0.6;
-        const wobble = Math.sin(idleAngle * 0.01) * 6;
-        if (cube) cube.style.transform = `rotateX(${currentX + wobble}deg) rotateY(${currentY + idleAngle}deg)`;
+      if (Date.now() - lastInteraction > 1500) {
+        idleAngle += 0.5;
+        const wobble = Math.sin(idleAngle * 0.008) * 5;
+        if (mainCube) mainCube.style.transform = `rotateX(${currentX + wobble}deg) rotateY(${currentY + idleAngle}deg)`;
       } else {
-        if (cube) cube.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+        if (mainCube) mainCube.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
       }
     };
+    animateCube();
 
-    animateSingleCube();
+    // Secondary cube auto-rotation
+    const secondaryCube = document.getElementById('secondaryCube');
+    let secAngle = 0;
+    if (secondaryCube) {
+      const animateSec = () => {
+        requestAnimationFrame(animateSec);
+        secAngle += 0.8;
+        secondaryCube.style.transform = `rotateX(${Math.sin(secAngle * 0.01) * 15}deg) rotateY(${secAngle}deg)`;
+      };
+      animateSec();
+    }
+
+    // Tertiary cube auto-rotation
+    const tertiaryCube = document.getElementById('tertiaryCube');
+    let tertAngle = 0;
+    if (tertiaryCube) {
+      const animateTert = () => {
+        requestAnimationFrame(animateTert);
+        tertAngle -= 0.6;
+        tertiaryCube.style.transform = `rotateX(${Math.cos(tertAngle * 0.008) * 20}deg) rotateY(${tertAngle}deg)`;
+      };
+      animateTert();
+    }
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
-      cancelAnimationFrame(animationFrameId2);
       window.removeEventListener('scroll', handleParallax);
-      window.removeEventListener('scroll', handleScrollCube);
-      if (cube) {
-        cube.removeEventListener('mouseenter', onCubeMouseEnter);
-        cube.removeEventListener('mouseleave', onCubeMouseLeave);
-        cube.removeEventListener('mousemove', onCubeMouseMove);
+      if (mainCube) {
+        mainCube.removeEventListener('mouseenter', onCubeMouseEnter);
+        mainCube.removeEventListener('mouseleave', onCubeMouseLeave);
+        mainCube.removeEventListener('mousemove', onCubeMouseMove);
       }
       interactiveElements.forEach(el => {
         el.removeEventListener('mouseenter', addHover);
@@ -273,27 +259,15 @@ export default function Main() {
           <li><a href="#capabilities">Capabilities</a></li>
           <li><a href="#sustainability">Sustainability</a></li>
           <li><a href="#clients">Clients</a></li>
+          <li><a href="#stats">Snapshot</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         
         <div className="nav-actions">
-          <div className="theme-palette">
-            <button onClick={() => setShowPalette(s => !s)} className="theme-toggle" aria-label="Theme palette">🎨</button>
-            {showPalette && (
-              <div className="theme-panel" role="menu">
-                {THEMES.map(t => (
-                  <button key={t.key} className={`theme-option ${t.key === theme ? 'active' : ''}`} onClick={() => { setTheme(t.key); setShowPalette(false); }} role="menuitem">
-                    <div className="swatches">
-                      <span className="swatch" style={{ background: t.preview[0] }}></span>
-                      <span className="swatch" style={{ background: t.preview[1] }}></span>
-                    </div>
-                    <div className="theme-label">{t.emoji} {t.label}</div>
-                    {t.key === theme && <div className="theme-check">✓</div>}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* Single Theme Toggle Button - Dark/Light only */}
+          <button onClick={toggleTheme} className="theme-toggle-single" aria-label="Toggle theme">
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
           
           <button className="nav-cta" onClick={() => document.getElementById('contact').scrollIntoView({behavior:'smooth'})}>
             Get a Quote
@@ -309,31 +283,35 @@ export default function Main() {
         <div className="hero-grid"></div>
         <div className="hero-grain"></div>
         
-        {/* PREMIUM 3D CUBES - Clean, Minimal, Professional (3 cubes with modern icons) */}
-        
-        {/* Main Cube - Large Primary Cube with Package Icon */}
+        {/* Main Large Interactive Cube - NO ICONS */}
         <div className="hero-3d-cube main-cube" id="rotatingCube">
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">◆</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">⬢</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">◇</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">⬡</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">●</span>
-          </div>
-          <div className="hero-3d-cube-face">
-            <span className="cube-icon">■</span>
-          </div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
         </div>
         
-        {/* Secondary & tertiary cubes removed — single large cube used now */}
+        {/* Secondary Cube - NO ICONS */}
+        <div className="hero-3d-cube secondary-cube" id="secondaryCube">
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+        </div>
+        
+        {/* Tertiary Cube - NO ICONS */}
+        <div className="hero-3d-cube tertiary-cube" id="tertiaryCube">
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+          <div className="hero-3d-cube-face"></div>
+        </div>
         
         <div className="hero-inner">
           <div className="hero-content">
@@ -364,48 +342,48 @@ export default function Main() {
           </div>
           
           <div className="hero-visual">
+            {/* SVG Masks for soft fluid/blotch frame shapes (high visibility, minimal crop) */}
+            <svg width="0" height="0" style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}>
+              <defs>
+                {/* Left Blotch Mask - Organic but large */}
+                <clipPath id="blob-left-mask" clipPathUnits="objectBoundingBox">
+                  <path d="M 0.08,0.12 C 0.28,-0.02, 0.82,0.05, 0.92,0.15 C 1.02,0.35, 0.95,0.72, 0.9,0.88 C 0.82,0.98, 0.65,1.02, 0.45,0.95 C 0.22,0.88, 0.08,0.95, 0.04,0.75 C 0,0.52, 0.05,0.28, 0.08,0.12 Z" />
+                </clipPath>
+                {/* Center Blotch Mask - Soft fluid wave */}
+                <clipPath id="organic-center-mask" clipPathUnits="objectBoundingBox">
+                  <path d="M 0.12,0.08 C 0.35,-0.05, 0.72,0.02, 0.88,0.12 C 1.02,0.28, 0.95,0.65, 0.98,0.82 C 1.02,0.98, 0.72,1.02, 0.52,0.95 C 0.32,0.88, 0.12,0.98, 0.05,0.8 C -0.02,0.62, 0.05,0.28, 0.12,0.08 Z" />
+                </clipPath>
+                {/* Right Blotch Mask - Organic distorted squircle */}
+                <clipPath id="squircle-right-mask" clipPathUnits="objectBoundingBox">
+                  <path d="M 0.15,0.05 C 0.45,-0.02, 0.8,0.05, 0.95,0.18 C 1.05,0.35, 0.98,0.7, 0.9,0.88 C 0.8,0.98, 0.5,1.02, 0.2,0.95 C 0.08,0.9, 0.02,0.75, 0.02,0.5 C 0.02,0.25, 0.05,0.12, 0.15,0.05 Z" />
+                </clipPath>
+                {/* Fourth Blotch Mask - Organic fluid shape */}
+                <clipPath id="organic-fourth-mask" clipPathUnits="objectBoundingBox">
+                  <path d="M 0.1,0.15 C 0.3,-0.05, 0.85,0.0, 0.95,0.2 C 1.05,0.4, 0.92,0.75, 0.85,0.9 C 0.75,1.0, 0.4,0.98, 0.15,0.9 C 0.05,0.82, -0.05,0.5, 0.05,0.25 C 0.08,0.18, 0.08,0.16, 0.1,0.15 Z" />
+                </clipPath>
+              </defs>
+            </svg>
+
             <div className="hero-card-stack">
-              <div className="hero-card hero-card-main">
-                <div className="hero-card-main-inner">
-                  <div className="hero-card-label">Monthly Production Snapshot</div>
-                  <div className="hero-stat-grid">
-                    <div className="hero-stat">
-                      <div className="hero-stat-num">500K+</div>
-                      <div className="hero-stat-label">Units / Month</div>
+              {/* Make the outer and inner containers fully transparent with no borders or shadows */}
+              <div className="hero-card hero-card-main" style={{ background: "transparent", border: "none", backdropFilter: "none", boxShadow: "none" }}>
+                <div className="hero-card-main-inner" style={{ overflow: "visible", background: "transparent", border: "none", backdropFilter: "none", boxShadow: "none", padding: 0 }}>
+                  <div className="parabola-frame">
+                    <div className="parabola-img-wrapper">
+                      <img src={img1} alt="Corrugation quality control" className="parabola-img" />
+                      <div className="parabola-img-label">Corrugation Quality</div>
                     </div>
-                    <div className="hero-stat">
-                      <div className="hero-stat-num">36+</div>
-                      <div className="hero-stat-label">Years Experience</div>
+                    <div className="parabola-img-wrapper">
+                      <img src={img2} alt="Vibrant print output" className="parabola-img" />
+                      <div className="parabola-img-label">Print Precision</div>
                     </div>
-                    <div className="hero-stat">
-                      <div className="hero-stat-num">350+</div>
-                      <div className="hero-stat-label">Team Members</div>
+                    <div className="parabola-img-wrapper">
+                      <img src={img3} alt="Final assembly line" className="parabola-img" />
+                      <div className="parabola-img-label">Final Assembly</div>
                     </div>
-                    <div className="hero-stat">
-                      <div className="hero-stat-num">75%</div>
-                      <div className="hero-stat-label">Recycled Materials</div>
-                    </div>
-                  </div>
-                  
-                  <div style={{ marginTop: "24px" }}>
-                    <div className="cap-visual-title" style={{ marginBottom: "14px" }}>Production Line Utilization</div>
-                    <div className="bar-group">
-                      <div className="bar-label-row">
-                        <span className="bar-label">Corrugation Lines</span>
-                        <span className="bar-pct">92%</span>
-                      </div>
-                      <div className="bar-track">
-                        <div className="bar-fill" style={{ width: "92%" }}></div>
-                      </div>
-                    </div>
-                    <div className="bar-group" style={{ marginBottom: "0" }}>
-                      <div className="bar-label-row">
-                        <span className="bar-label">Print & Finishing</span>
-                        <span className="bar-pct">88%</span>
-                      </div>
-                      <div className="bar-track">
-                        <div className="bar-fill" style={{ width: "88%" }}></div>
-                      </div>
+                    <div className="parabola-img-wrapper">
+                      <img src={img4} alt="Eco Sourcing" className="parabola-img" />
+                      <div className="parabola-img-label">Eco Sourcing</div>
                     </div>
                   </div>
                 </div>
@@ -413,11 +391,11 @@ export default function Main() {
               
               <div className="hero-mini-cards">
                 <div className="hero-mini">
-                  <div className="hero-mini-icon">📦</div>
+                  <div className="hero-mini-icon"></div>
                   <span>3, 5 & 7-ply Corrugation</span>
                 </div>
                 <div className="hero-mini">
-                  <div className="hero-mini-icon">🌿</div>
+                  <div className="hero-mini-icon"></div>
                   <span>FSC® Certified Sourcing</span>
                 </div>
               </div>
@@ -456,37 +434,37 @@ export default function Main() {
           </p>
           
           <div className="trusted-grid">
-            <div className="trusted-card spotlight-card reveal reveal-delay-1">
+            <div className="trusted-card reveal reveal-delay-1">
               <div>
                 <span className="trusted-name">Unilever Pakistan</span>
                 <span className="trusted-sub">FMCG · Consumer Goods</span>
               </div>
             </div>
-            <div className="trusted-card spotlight-card reveal reveal-delay-2">
+            <div className="trusted-card reveal reveal-delay-2">
               <div>
                 <span className="trusted-name">Engro Foods</span>
                 <span className="trusted-sub">Food & Beverage</span>
               </div>
             </div>
-            <div className="trusted-card spotlight-card reveal reveal-delay-3">
+            <div className="trusted-card reveal reveal-delay-3">
               <div>
                 <span className="trusted-name">Gul Ahmed Textile</span>
                 <span className="trusted-sub">Textiles & Garments</span>
               </div>
             </div>
-            <div className="trusted-card spotlight-card reveal reveal-delay-4">
+            <div className="trusted-card reveal reveal-delay-4">
               <div>
                 <span className="trusted-name">Chevron Pakistan</span>
                 <span className="trusted-sub">Energy & Lubricants</span>
               </div>
             </div>
-            <div className="trusted-card spotlight-card reveal reveal-delay-1">
+            <div className="trusted-card reveal reveal-delay-1">
               <div>
                 <span className="trusted-name">Dalda Foods</span>
                 <span className="trusted-sub">Food Manufacturing</span>
               </div>
             </div>
-            <div className="trusted-card spotlight-card reveal reveal-delay-2">
+            <div className="trusted-card reveal reveal-delay-2">
               <div>
                 <span className="trusted-name">Al-Karam Towels</span>
                 <span className="trusted-sub">Home Textiles</span>
@@ -513,8 +491,7 @@ export default function Main() {
           </div>
           
           <div className="products-grid">
-            <div className="product-card spotlight-card reveal reveal-delay-1">
-              <div className="product-icon">📦</div>
+            <div className="product-card reveal reveal-delay-1">
               <div className="product-tag">3-Ply Construction</div>
               <div className="product-name">Single Wall Boxes</div>
               <div className="product-desc">Standard corrugated cartons built for everyday distribution needs. Reliable, lightweight, and cost-effective.</div>
@@ -525,8 +502,7 @@ export default function Main() {
               </div>
             </div>
             
-            <div className="product-card spotlight-card reveal reveal-delay-2">
-              <div className="product-icon">🏗️</div>
+            <div className="product-card reveal reveal-delay-2">
               <div className="product-tag">5-Ply Heavy Duty</div>
               <div className="product-name">Double Wall Boxes</div>
               <div className="product-desc">Increased stacking strength and crush resistance for heavier goods and long-distance logistics.</div>
@@ -536,8 +512,7 @@ export default function Main() {
               </div>
             </div>
             
-            <div className="product-card spotlight-card reveal reveal-delay-3">
-              <div className="product-icon">⚙️</div>
+            <div className="product-card reveal reveal-delay-3">
               <div className="product-tag">7-Ply Ultra-Strong</div>
               <div className="product-name">Triple Wall Boxes</div>
               <div className="product-desc">Ultra-heavy-duty solution for bulk industrial shipments and export containers. Maximum compression resistance.</div>
@@ -547,8 +522,7 @@ export default function Main() {
               </div>
             </div>
             
-            <div className="product-card spotlight-card reveal reveal-delay-4">
-              <div className="product-icon">✂️</div>
+            <div className="product-card reveal reveal-delay-4">
               <div className="product-tag">Precision Die-Cut</div>
               <div className="product-name">Die-Cut Boxes</div>
               <div className="product-desc">Custom-shaped boxes with precision die-cutting for branded retail, e-commerce unboxing experiences.</div>
@@ -559,8 +533,7 @@ export default function Main() {
               </div>
             </div>
             
-            <div className="product-card spotlight-card reveal reveal-delay-1">
-              <div className="product-icon">🎨</div>
+            <div className="product-card reveal reveal-delay-1">
               <div className="product-tag">Up to 6 Colors</div>
               <div className="product-name">Printed Boxes</div>
               <div className="product-desc">Multi-color flexographic and offset printed corrugated boxes. Bring your brand to life.</div>
@@ -570,8 +543,7 @@ export default function Main() {
               </div>
             </div>
             
-            <div className="product-card spotlight-card reveal reveal-delay-2">
-              <div className="product-icon">🍯</div>
+            <div className="product-card reveal reveal-delay-2">
               <div className="product-tag">Lightweight & Strong</div>
               <div className="product-name">Honeycomb Boards</div>
               <div className="product-desc">Exceptional strength-to-weight ratio alternative to solid boards. Perfect for automotive parts.</div>
@@ -581,8 +553,7 @@ export default function Main() {
               </div>
             </div>
             
-            <div className="product-card spotlight-card reveal reveal-delay-3">
-              <div className="product-icon">📋</div>
+            <div className="product-card reveal reveal-delay-3">
               <div className="product-tag">RSC Standard</div>
               <div className="product-name">Slotted Cartons</div>
               <div className="product-desc">Regular Slotted Cartons optimized for high-speed automated packing lines.</div>
@@ -592,8 +563,7 @@ export default function Main() {
               </div>
             </div>
             
-            <div className="product-card spotlight-card reveal reveal-delay-4">
-              <div className="product-icon">📄</div>
+            <div className="product-card reveal reveal-delay-4">
               <div className="product-tag">Raw Material</div>
               <div className="product-name">Corrugated Sheets</div>
               <div className="product-desc">Raw corrugated sheets for in-house converters, industrial fabricators, and wholesale buyers.</div>
@@ -615,48 +585,44 @@ export default function Main() {
           
           <div className="why-grid">
             <div className="why-stats reveal">
-              <div className="why-stat-card spotlight-card">
+              <div className="why-stat-card">
                 <div className="why-num">36+</div>
                 <div className="why-num-label">Years of industry experience and continuous innovation</div>
               </div>
-              <div className="why-stat-card spotlight-card">
+              <div className="why-stat-card">
                 <div className="why-num">500K</div>
                 <div className="why-num-label">Units manufactured every single month</div>
               </div>
-              <div className="why-stat-card spotlight-card">
+              <div className="why-stat-card">
                 <div className="why-num">350+</div>
                 <div className="why-num-label">Skilled professionals across two facilities</div>
               </div>
-              <div className="why-stat-card spotlight-card">
+              <div className="why-stat-card">
                 <div className="why-num">75%</div>
                 <div className="why-num-label">Raw materials from recycled & sustainable sources</div>
               </div>
             </div>
             
             <div className="why-features reveal reveal-delay-2">
-              <div className="why-feature spotlight-card">
-                <div className="why-feature-icon">🏅</div>
+              <div className="why-feature">
                 <div>
                   <div className="why-feature-title">FSC® Certified Operations</div>
                   <div className="why-feature-desc">Globally recognized certification ensuring responsible forestry practices.</div>
                 </div>
               </div>
-              <div className="why-feature spotlight-card">
-                <div className="why-feature-icon">⚡</div>
+              <div className="why-feature">
                 <div>
                   <div className="why-feature-title">Zero-Downtime Guarantee</div>
                   <div className="why-feature-desc">500 KW backup generators ensure uninterrupted production.</div>
                 </div>
               </div>
-              <div className="why-feature spotlight-card">
-                <div className="why-feature-icon">🔬</div>
+              <div className="why-feature">
                 <div>
                   <div className="why-feature-title">6-Stage Quality Testing</div>
                   <div className="why-feature-desc">Every batch tested before dispatch for guaranteed quality.</div>
                 </div>
               </div>
-              <div className="why-feature spotlight-card">
-                <div className="why-feature-icon">🌿</div>
+              <div className="why-feature">
                 <div>
                   <div className="why-feature-title">Eco-First Manufacturing</div>
                   <div className="why-feature-desc">Water-based inks, VOC-free processes, and zero liquid discharge.</div>
@@ -730,20 +696,17 @@ export default function Main() {
           </p>
           
           <div className="sustain-grid">
-            <div className="sustain-card spotlight-card reveal reveal-delay-1">
-              <div className="sustain-icon">♻️</div>
+            <div className="sustain-card reveal reveal-delay-1">
               <div className="sustain-pct">75%+</div>
               <div className="sustain-title">Recycled Raw Materials</div>
               <div className="sustain-desc">Over three-quarters of our raw materials are derived from recycled paper and fibre sources.</div>
             </div>
-            <div className="sustain-card spotlight-card reveal reveal-delay-2">
-              <div className="sustain-icon">💧</div>
+            <div className="sustain-card reveal reveal-delay-2">
               <div className="sustain-pct">0</div>
               <div className="sustain-title">Liquid Discharge Policy</div>
               <div className="sustain-desc">Zero liquid discharge enforced across all active production areas.</div>
             </div>
-            <div className="sustain-card spotlight-card reveal reveal-delay-3">
-              <div className="sustain-icon">🌱</div>
+            <div className="sustain-card reveal reveal-delay-3">
               <div className="sustain-pct">100%</div>
               <div className="sustain-title">Water-Based Inks</div>
               <div className="sustain-desc">Exclusively water-based, non-toxic, VOC-free inks used across all print jobs.</div>
@@ -751,15 +714,13 @@ export default function Main() {
           </div>
           
           <div style={{ marginTop: "2px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2px" }}>
-            <div className="sustain-card spotlight-card reveal reveal-delay-1" style={{ display: "flex", alignItems: "center", gap: "24px", flexDirection: "row" }}>
-              <div style={{ fontSize: "1.8rem" }}>🏭</div>
+            <div className="sustain-card reveal reveal-delay-1" style={{ display: "flex", alignItems: "center", gap: "24px", flexDirection: "row" }}>
               <div>
                 <div className="sustain-title">In-House Waste Baling</div>
                 <div className="sustain-desc">State-of-the-art commercial baling system processes all paper waste on-site.</div>
               </div>
             </div>
-            <div className="sustain-card spotlight-card reveal reveal-delay-2" style={{ display: "flex", alignItems: "center", gap: "24px", flexDirection: "row" }}>
-              <div style={{ fontSize: "1.8rem" }}>🌲</div>
+            <div className="sustain-card reveal reveal-delay-2" style={{ display: "flex", alignItems: "center", gap: "24px", flexDirection: "row" }}>
               <div>
                 <div className="sustain-title" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   FSC® Certified Procurement
@@ -781,7 +742,7 @@ export default function Main() {
           
           <div className="process-steps reveal">
             <div className="process-line"></div>
-            <div className="process-step spotlight-card">
+            <div className="process-step">
               <div className="process-num">01</div>
               <div>
                 <div className="process-title">Consultation & Specification</div>
@@ -792,7 +753,7 @@ export default function Main() {
                 </div>
               </div>
             </div>
-            <div className="process-step spotlight-card">
+            <div className="process-step">
               <div className="process-num">02</div>
               <div>
                 <div className="process-title">Custom Design & Sampling</div>
@@ -803,7 +764,7 @@ export default function Main() {
                 </div>
               </div>
             </div>
-            <div className="process-step spotlight-card">
+            <div className="process-step">
               <div className="process-num">03</div>
               <div>
                 <div className="process-title">Quality-Controlled Manufacturing</div>
@@ -814,7 +775,7 @@ export default function Main() {
                 </div>
               </div>
             </div>
-            <div className="process-step spotlight-card" style={{ marginBottom: "0" }}>
+            <div className="process-step" style={{ marginBottom: "0" }}>
               <div className="process-num">04</div>
               <div>
                 <div className="process-title">Delivery & After-Sales Support</div>
@@ -837,7 +798,7 @@ export default function Main() {
           </h2>
           
           <div className="testi-grid" style={{ marginTop: "56px" }}>
-            <div className="testi-card spotlight-card reveal reveal-delay-1">
+            <div className="testi-card reveal reveal-delay-1">
               <div className="testi-stars">★★★★★</div>
               <div className="testi-text">"Royal Paper has been our go-to packaging supplier for over a decade. Their consistency and quality is unmatched in Pakistan."</div>
               <div className="testi-author">
@@ -848,7 +809,7 @@ export default function Main() {
                 </div>
               </div>
             </div>
-            <div className="testi-card spotlight-card reveal reveal-delay-2">
+            <div className="testi-card reveal reveal-delay-2">
               <div className="testi-stars">★★★★★</div>
               <div className="testi-text">"The FSC certification and eco-friendly processes exceeded every expectation in sustainability."</div>
               <div className="testi-author">
@@ -859,7 +820,7 @@ export default function Main() {
                 </div>
               </div>
             </div>
-            <div className="testi-card spotlight-card reveal reveal-delay-3">
+            <div className="testi-card reveal reveal-delay-3">
               <div className="testi-stars">★★★★★</div>
               <div className="testi-text">"From custom die-cut designs to bulk corrugated sheets, their range and turnaround time is exceptional."</div>
               <div className="testi-author">
@@ -953,29 +914,25 @@ export default function Main() {
           <div className="contact-grid">
             <div>
               <div className="contact-info reveal">
-                <div className="contact-item spotlight-card">
-                  <div className="contact-item-icon">📍</div>
+                <div className="contact-item">
                   <div>
                     <div className="contact-item-label">Factory Address</div>
                     <div className="contact-item-value">Plot # B-25, SITE II Super Highway<br />Scheme-33, Karachi, Pakistan</div>
                   </div>
                 </div>
-                <div className="contact-item spotlight-card">
-                  <div className="contact-item-icon">📞</div>
+                <div className="contact-item">
                   <div>
                     <div className="contact-item-label">Phone</div>
                     <div className="contact-item-value">+92-21-36881424<br />+92-21-36881425</div>
                   </div>
                 </div>
-                <div className="contact-item spotlight-card">
-                  <div className="contact-item-icon">✉️</div>
+                <div className="contact-item">
                   <div>
                     <div className="contact-item-label">Email</div>
                     <div className="contact-item-value">royalpaperandplastic@gmail.com<br />info@royalppackages.com</div>
                   </div>
                 </div>
-                <div className="contact-item spotlight-card">
-                  <div className="contact-item-icon">🕐</div>
+                <div className="contact-item">
                   <div>
                     <div className="contact-item-label">Operating Hours</div>
                     <div className="contact-item-value">Monday – Saturday<br />9:00 AM – 6:00 PM PKT</div>
@@ -1082,6 +1039,7 @@ export default function Main() {
                 <li><a href="#capabilities">Capabilities</a></li>
                 <li><a href="#sustainability">Sustainability</a></li>
                 <li><a href="#clients">Our Clients</a></li>
+                <li><a href="#stats">Snapshot</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="http://www.royalppackages.com" target="_blank" rel="noopener noreferrer">Website</a></li>
               </ul>
@@ -1098,7 +1056,7 @@ export default function Main() {
               </div>
               <div style={{ marginTop: "20px" }}>
                 <div className="footer-col-title" style={{ marginBottom: "12px" }}>Registration</div>
-                <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", color: "var(--text-subtle)", lineHeight: "2" }}>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", color: "var(--text-muted)", lineHeight: "2" }}>
                   NTN: 7245050<br />
                   Reg: 32-77-8763-245-39<br />
                   Est. 1990 · Karachi, PK
