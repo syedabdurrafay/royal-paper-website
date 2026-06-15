@@ -5,6 +5,7 @@ import img2 from './assets/Gemini_Generated_Image_oi5pjzoi5pjzoi5p.png';
 import img3 from './assets/Gemini_Generated_Image_xqqrn4xqqrn4xqqr.png';
 import img4 from './assets/Gemini_Generated_Image_42fg9442fg9442fg.png';
 
+
 export default function HomePage() {
   // Single theme state - only dark or light
   const [theme, setTheme] = useState(() => {
@@ -260,6 +261,7 @@ export default function HomePage() {
           <li><a href="#sustainability">Sustainability</a></li>
           <li><a href="#clients">Clients</a></li>
           <li><a href="#stats">Snapshot</a></li>
+          <li><a href="#gallery">Gallery</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         
@@ -423,7 +425,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="section-wrapper" id="clients">
+      <div className="section-wrapper clients-section" id="clients">
         <div className="section reveal">
           <div className="section-label">Trusted Partners</div>
           <h2 className="section-title">

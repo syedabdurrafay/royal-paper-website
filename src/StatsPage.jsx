@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+
 export default function StatsPage() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'dark';
